@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(650deg); }
+}
+
+@keyframes shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(2px,0px); }
+    50% { transform: translate(-2px,0px); }
+    75% { transform: translate(2px,0px); }
+    100% { transform: translate(-2px,0px); }
+}
+
+.b {
+    border: 1px solid red;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+    user-select: none;
+}
+
+body {
+    background: #666;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-menu-bg {
+    background-image: url("./assets/images/startMenu/startMenuBg.png");
+    background-size: cover;
+}
+
+.game-bg {
+    background-image: url("./assets/images/levels/full-bg.png");
+    background-size: cover;
+}
+
+.brightness:hover {
+    filter: brightness(115%);
+    cursor: pointer;
+}
+
+.transition-1000 {
+    transition: 1s;
+}
+
+.center-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sun {
+    animation: 9s rotate linear forwards;
+}
+.shake {
+    animation: 1s shake linear forwards ;
+    color: red;
+}
+
+
+
