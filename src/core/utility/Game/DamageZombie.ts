@@ -3,23 +3,21 @@ import CreateWinCard from "./CreateWinCard";
 
 const DamageZombie = (zombie: Element , parentBlocks: THTMLDivElement , img: Element) => {
 
+    const children = parentBlocks.current?.nextElementSibling?.children as HTMLCollection
     const hp = parseInt(zombie.getAttribute('data-hp') as string)
-
     const dot = img.getAttribute("src")?.lastIndexOf(".")
     const slash = img.getAttribute("src")?.lastIndexOf("/") as number
     const image = img.getAttribute("src")?.slice(slash+1 , dot)
-
-
-   if(image == "SnowPea") {
-        zombie.children[0].classList.add("drop-shadow-[0_0_3px_blue]")
-        setTimeout(() => zombie.children[0].classList.remove("drop-shadow-[0_0_3px_blue]"), 700);               
-   }
-   else {
-       zombie.children[0].classList.add("drop-shadow-[0_0_3px_red]")
-       setTimeout(() => zombie.children[0].classList.remove("drop-shadow-[0_0_3px_red]"), 700);               
-   }
+    const zombieClassName = zombie.children[0].classList
     
-   const children = parentBlocks.current?.nextElementSibling?.children as HTMLCollection
+    if(image == "SnowPea") {
+        zombieClassName.add("drop-shadow-[0_0_3px_blue]")
+        setTimeout(() => zombieClassName.remove("drop-shadow-[0_0_3px_blue]"), 700);               
+    }
+    else {
+        zombieClassName.add("drop-shadow-[0_0_3px_red]")
+        setTimeout(() => zombieClassName.remove("drop-shadow-[0_0_3px_red]"), 700);               
+    }
 
     if(hp == 1) {
         setTimeout(() => {
@@ -30,9 +28,8 @@ const DamageZombie = (zombie: Element , parentBlocks: THTMLDivElement , img: Ele
             }
         }, 1000);
     }
-    else {
-        zombie.setAttribute("data-hp",`${hp - 1}`)
-    }    
+    else zombie.setAttribute("data-hp",`${hp - 1}`)
+      
 
 }
 

@@ -16,7 +16,6 @@ const WalkZombies = (img: HTMLImageElement , div: HTMLDivElement) => {
 
         }
        
-        
     }
 
 }

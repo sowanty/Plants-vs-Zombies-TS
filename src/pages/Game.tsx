@@ -13,7 +13,7 @@ import CreateZombies from "../core/utility/Game/CreateZombies"
 import GetLocalStorage from "../core/utility/GetLocalStorage"
 
 const Game = () => {
-    // right-[47.9%]
+    
     const [sun, setSun] = useState(50)
     const [blockArray, setBlockArray] = useState(block)
     const [selectedPlantImage, setSelectedPlantImaget] = useState("")
@@ -28,16 +28,13 @@ const Game = () => {
     const parentZombies = useRef<HTMLDivElement>(null)
     let count = 0
     
-    
     useEffect(() => {
 
         if(selectedPlants.length == 0) location.pathname = "/select-plants"
         const interval1 = setInterval(() => CreateSun(container,setSun) , 12000);
 
-        return () => {
-            clearInterval(interval1)
-        }
-
+        return () => clearInterval(interval1)
+        
     }, [])
 
     useEffect(() => {
@@ -48,20 +45,19 @@ const Game = () => {
                 count = count + 1
                 CreateZombies(parentZombies,parentBlocks,setRemovePlants)
             }
-        } , 20000);
+        } , 15000);
 
-        return () => {
-            clearInterval(interval1)
-        }
-      
+        return () => clearInterval(interval1)
+
     }, [count])
     
     useEffect(() => { 
         if(isExistPlant) {
-            CraeteSunSunFlower(setSun,parentBlocks)
-            const interval = setInterval(() => { CreatePeaShooter(parentBlocks,parentZombies) }, 1000);
+            const interval1 = setInterval(() => { CraeteSunSunFlower(setSun,parentBlocks)      }, 1000);
+            const interval2 = setInterval(() => { CreatePeaShooter(parentBlocks,parentZombies) }, 1000);
             return () => {
-                clearInterval(interval)
+                clearInterval(interval1)
+                clearInterval(interval2)
             }
         } 
     } , [isExistPlant])  
@@ -104,7 +100,7 @@ const Game = () => {
 
                 }
             </div>
-            <div ref={parentZombies} className="w-[740px] h-[500px] absolute top-20 left-7 flex flex-wrap content-start z-10"></div>
+            <div ref={parentZombies} className="w-[740px] h-[500px] absolute top-20 left-7 flex flex-wrap content-start"></div>
             
         </div>
         

@@ -1,7 +1,7 @@
-import { THTMLDivElement } from "../../types"
+import { THTMLDivElement, TSetStateNumber } from "../../types"
 import ImagesSource from "../ImagesSource"
 
-const CreateSun = (container: THTMLDivElement , setSun: React.Dispatch<React.SetStateAction<number>> ) => {
+const CreateSun = (container: THTMLDivElement , setSun: TSetStateNumber ) => {
     
     let top = 0
     const randomLeftSun = Math.random()*55+5

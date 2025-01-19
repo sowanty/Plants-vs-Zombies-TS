@@ -8,8 +8,6 @@ const handlePeaImage = (target: Element) => {
     else if(img == "peashooter2.png") return "SnowPea"
     else if(img == "peashooter3.png") return "pea"
     
-
-
 }
 
 export default handlePeaImage

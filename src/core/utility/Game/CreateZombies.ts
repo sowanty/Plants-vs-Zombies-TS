@@ -1,4 +1,4 @@
-import { THTMLDivElement } from "../../types"
+import { THTMLDivElement, TSetStateBoolean } from "../../types"
 import zombies from "../../services/Zombies"
 import ImagesSource from "../ImagesSource"
 import HandleEatPlantsByZombies from "./HandleEatPlantsByZombies"
@@ -6,7 +6,7 @@ import SetHpForZombies from "./SetHpForZombies"
 import WalkZombies from "./WalkZombies"
 import HandleZinedxZombies from "./HandleZinedxZombies"
 
-const CreateZombies = (parentZombies: THTMLDivElement , parentBlocks: THTMLDivElement , setRemovePlants: React.Dispatch<React.SetStateAction<boolean>>) => {
+const CreateZombies = (parentZombies: THTMLDivElement , parentBlocks: THTMLDivElement , setRemovePlants: TSetStateBoolean) => {
 
     const zombiesTop = [4,23,43,63,82]
     const randomZombieImage = Math.floor(Math.random()*3)

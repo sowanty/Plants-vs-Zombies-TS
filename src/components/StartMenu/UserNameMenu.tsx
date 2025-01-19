@@ -2,12 +2,11 @@ import GetLocalStorage from "../../core/utility/GetLocalStorage"
 import SetLocalStorage from "../../core/utility/SetLocalStorage"
 import ImagesSource from "../../core/utility/ImagesSource"
 import { useRef, useState } from "react"
+import { TSetStateString } from "../../core/types"
 
-interface IUserNameMenu {
-    setUsername : React.Dispatch<React.SetStateAction<string>>
-}
 
-const UserNameMenu = ({ setUsername } : IUserNameMenu) => {
+
+const UserNameMenu = (setUsername: TSetStateString) => {
 
     const [isUserName, setIsUserName] = useState(GetLocalStorage("username") == null ? false : true)
     const input = useRef<HTMLInputElement>(null)

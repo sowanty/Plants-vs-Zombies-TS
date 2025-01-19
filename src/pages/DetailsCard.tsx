@@ -8,8 +8,13 @@ const DetailsCard = () => {
     const level = GetLocalStorage("level")
 
     const nextLevel = () => {
-        SetLocalStorage("level",`${(+level)+1}`)
-        location.pathname = "/select-plants"
+        if(level == "4") {
+            location.pathname = "/start-menu"
+        }
+        else {
+            SetLocalStorage("level",`${(+level)+1}`)
+            location.pathname = "/select-plants"
+        }
     }
 
     return (

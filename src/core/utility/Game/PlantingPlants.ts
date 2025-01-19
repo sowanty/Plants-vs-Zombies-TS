@@ -1,10 +1,10 @@
-import { THTMLDivElement } from "../../types"
+import { THTMLDivElement, TSetStateBoolean, TSetStateNumber, TSetStateString } from "../../types"
 import block from "../../services/Block"
 import SetHpForPlants from "./SetHpForPlants"
 import SetTimerForPlants from "./SetTimerForPlants"
 import { IBlock } from "../../interfaces"
 
-const PlantingPlants = (index: number , selectedPlantImage: string ,setSelectedPlantImaget: React.Dispatch<React.SetStateAction<string>>,setBlockArray: React.Dispatch<React.SetStateAction<IBlock[]>>,setSun: React.Dispatch<React.SetStateAction<number>>,currentPlantPrice: number,setIsExistPlant: React.Dispatch<React.SetStateAction<boolean>>,parentBlocks: React.RefObject<HTMLDivElement>,container: React.RefObject<HTMLDivElement>) => {
+const PlantingPlants = (index: number , selectedPlantImage: string ,setSelectedPlantImaget: TSetStateString,setBlockArray: React.Dispatch<React.SetStateAction<IBlock[]>>,setSun: TSetStateNumber,currentPlantPrice: number,setIsExistPlant: TSetStateBoolean,parentBlocks: THTMLDivElement ,container: THTMLDivElement) => {
 
     const children = parentBlocks.current?.children as HTMLCollection
     const parent = container.current as HTMLDivElement
@@ -21,6 +21,7 @@ const PlantingPlants = (index: number , selectedPlantImage: string ,setSelectedP
         SetHpForPlants(selectedPlantImage,children,index)
 
     }
+    
 }
 
 export default PlantingPlants

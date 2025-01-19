@@ -15,16 +15,12 @@ const CreatePeaShooter = (parentBlocks: THTMLDivElement , parentZombies: THTMLDi
 
         if(target && target.getAttribute("src")?.indexOf("peashooter") !== -1) {
 
-            children[i].setAttribute("data-stop","true")
-
             for (let index = 0; index < zombieChildren.length; index++) {
+                
+                if(block[i].top == parseInt(zombieChildren[index].getAttribute("data-top") as string) ) {
+                    
+                    if(parseInt(zombieChildren[index].children[0].getAttribute("data-left") as string) > block[i].left-5) {
 
-                const zombie = zombieChildren[index]
-                const zombieTop = parseInt(zombie.getAttribute("data-top") as string)
-                const zombieLeft = parseInt(zombie.children[0].getAttribute("data-left") as string)
-                if(children[i].getAttribute("data-stop") == "true") {
-                    if(block[i].top == zombieTop && block[i].left < zombieLeft) {
-                        children[i].setAttribute("data-stop","false")
                         if(parseInt(children[i].getAttribute("data-timer") as string) == 0) {
                             
                             const img = document.createElement("img")
@@ -36,11 +32,11 @@ const CreatePeaShooter = (parentBlocks: THTMLDivElement , parentZombies: THTMLDi
                             children[i].setAttribute("data-timer","12")
                             
                             setInterval(() => {
-                                const zombieLeft = parseInt(zombie.children[0].getAttribute("data-left") as string)
+                                const zombieLeft = zombieChildren[0] ? parseInt(zombieChildren[0].children[0].getAttribute("data-left") as string) : 100
                                 if(!img.getAttribute("data-remove") && parseInt(img.style.left)-7 >= zombieLeft) {
                                     img.setAttribute("data-remove","true")
                                     img.remove()                    
-                                    DamageZombie(zombie,parentBlocks,img)
+                                    zombieChildren[0] && DamageZombie(zombieChildren[0],parentBlocks,img)
                                 }     
                                 else img.style.left = `${ parseInt(img.style.left) + 1 }%` 
                                                             
@@ -48,8 +44,8 @@ const CreatePeaShooter = (parentBlocks: THTMLDivElement , parentZombies: THTMLDi
                         }
             
                         children[i].setAttribute("data-timer",`${parseInt(children[i].getAttribute("data-timer") as string) - 1}`)
-    
                     }
+
                 }
                 
             }
