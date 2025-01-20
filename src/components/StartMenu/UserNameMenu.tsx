@@ -4,14 +4,13 @@ import ImagesSource from "../../core/utility/ImagesSource"
 import { useRef, useState } from "react"
 import { TSetStateString } from "../../core/types"
 
-
-
-const UserNameMenu = (setUsername: TSetStateString) => {
+const UserNameMenu = ({ setUsername }: { setUsername: TSetStateString}) => {
 
     const [isUserName, setIsUserName] = useState(GetLocalStorage("username") == null ? false : true)
     const input = useRef<HTMLInputElement>(null)
 
     const handelUserName = () => {
+        
         const value = input.current?.value as string
         if(value.length > 5) {
             SetLocalStorage("username", value)

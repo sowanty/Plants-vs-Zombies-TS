@@ -12,8 +12,6 @@ export interface IChildren {
 export interface IContext { 
     selectedPlants : ISelectedPlants[],
     setSelectedPlants : React.Dispatch<React.SetStateAction<ISelectedPlants[]>> ,
-    zombieInGame: IZombiesInGame[] ,
-    setZombieInGame: React.Dispatch<React.SetStateAction<IZombiesInGame[]>>
 }
 
 export interface IBlock {
@@ -24,17 +22,20 @@ export interface IBlock {
     left: number
 }
 
-// export interface IZombiesInGame {
-//     id: number ,
-//     img: string , 
-//     left: number ,
-//     top: number ,
-//     hp : number
-// }
-
-export interface IZombiesInGame {
-    top: number ,
-    left: number
+export interface ICard { 
+    id?: number ,
+    price?: number   ,
+    img?: string   ,
+    isBrightness?: boolean ,
+    label?: string ,
+    description?: string ,
+    className?: string ,
+    isSmall?: boolean ,
+    handleClickCard: () => void
 }
+
+
+
+
 
 

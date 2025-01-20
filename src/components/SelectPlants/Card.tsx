@@ -1,17 +1,9 @@
 import { useLocation } from "react-router-dom"
 import ImagesSource from "../../core/utility/ImagesSource"
+import { ICard } from "../../core/interfaces"
+  
 
-interface ICard {
-    img : string ,
-    price : number ,
-    isBrightness : boolean , 
-    className ?: string ,
-    index : number ,
-    isSmall : boolean
-    handleClickCard : (index: number) => void , 
-}
-
-const Card = ({ img , price , isBrightness , className , index , isSmall , handleClickCard }: ICard) => {
+const Card = ({ img , price , isBrightness , className , isSmall , handleClickCard }: ICard) => {
 
     const location = useLocation()
 
@@ -19,7 +11,7 @@ const Card = ({ img , price , isBrightness , className , index , isSmall , handl
     const game = location.pathname == "/game" ? true : false
 
     return (
-        <div className={`center-row relative ${className}`} data-brightness={isBrightness} onClick={() => handleClickCard(index)}>
+        <div className={`center-row relative ${className}`} data-brightness={isBrightness} onClick={handleClickCard}>
             <img src={ ImagesSource("/levels/SeedPacket_Larger.png") } alt="" className={isSmall ? "w-[78px] h-full" : "w-[78px] h-[100px]"} />
             <img src={ ImagesSource(`/plants/${img}.png`) } alt="" className={`absolute h-12 mb-4 ${(url && isSmall) ? "scale-[80%]" : ""}`} />
             <div className={`absolute bottom-0 text-xs m-1 ${game ? "mb-[6px]" : ""} ${url ? "mb-[6px]" : ""}`}>{price}</div>

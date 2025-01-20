@@ -1,11 +1,11 @@
+import { useContext, useState } from "react"
+import { context } from "../context/AppContext"
 import { Link } from "react-router-dom"
 import ImagesSource from "../core/utility/ImagesSource"
-import { useContext, useState } from "react"
 import plants from "../core/services/Plants"
 import Card from "../components/SelectPlants/Card"
 import returnCard from "../core/utility/SelectPlants/ReturnCard"
 import selectPlant from "../core/utility/SelectPlants/SelectCard"
-import { context } from "../context/AppContext"
 import GetLocalStorage from "../core/utility/GetLocalStorage"
 
 
@@ -31,7 +31,7 @@ const SelectPlants = () => {
                 {
                     array.map((element,index) => {
                         
-                        return <Card key={index} {...element } index={index} className={element.isBrightness ? "brightness" : "brightness-50"} isSmall={false} handleClickCard={() => (element.isBrightness && selectedPlants.length < 5) ? selectPlant(index,setSelectedPlants) : alert("این کارت انتخاب شده یا دیگر قادر به انتخاب کارت نیستید") } />
+                        return <Card key={index} className={element.isBrightness ? "brightness" : "brightness-50"} isSmall={false} handleClickCard={() => (element.isBrightness && selectedPlants.length < 5) ? selectPlant(index,setSelectedPlants) : alert("این کارت انتخاب شده یا دیگر قادر به انتخاب کارت نیستید") } {...element } />
                         
                     })
                 }
@@ -45,7 +45,7 @@ const SelectPlants = () => {
                 {
                     selectedPlants.map((element,index) => {
                         
-                        return <Card key={index} {...element } index={index} handleClickCard={() => returnCard(element,setSelectedPlants)} isSmall={true} className="cursor-pointer" />
+                        return <Card key={index} className="cursor-pointer" isSmall={true} handleClickCard={() => returnCard(element,setSelectedPlants)}  {...element } />
                         
                     })
                 }

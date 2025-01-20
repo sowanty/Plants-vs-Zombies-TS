@@ -45,7 +45,7 @@ const Game = () => {
                 count = count + 1
                 CreateZombies(parentZombies,parentBlocks,setRemovePlants)
             }
-        } , 15000);
+        } , 20000);
 
         return () => clearInterval(interval1)
 
@@ -77,7 +77,7 @@ const Game = () => {
                 {
                     selectedPlants.map((element,index) => {
                         
-                        return <Card key={index} {...element } index={index} isSmall={true} className="scale-y-75 brightness" handleClickCard={ () => clickCards(sun , element , setSelectedPlantImaget , setCurrentPlantPrice , sunParent , container) } />
+                        return <Card key={index} {...element } isSmall={true} className="scale-y-75 brightness" handleClickCard={ () => clickCards(sun , element , setSelectedPlantImaget , setCurrentPlantPrice , sunParent , container) } />
                         
                     })
                 }

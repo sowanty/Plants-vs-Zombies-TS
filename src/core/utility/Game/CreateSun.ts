@@ -5,7 +5,7 @@ const CreateSun = (container: THTMLDivElement , setSun: TSetStateNumber ) => {
     
     let top = 0
     const randomLeftSun = Math.random()*55+5
-    const randomTopSun = Math.random()*6500+2000    
+    const randomTopSun = Math.random()*4000+2000    
 
     const img = document.createElement("img")
     img.src = `${ImagesSource("/levels/sun.png")}`
@@ -26,7 +26,7 @@ const CreateSun = (container: THTMLDivElement , setSun: TSetStateNumber ) => {
     const interval = setInterval(() => {
         top = top + 1
         img.style.top = `${top}px`
-    }, 1);
+    }, 10);
 
     setTimeout(() => clearInterval(interval), randomTopSun);
     setTimeout(() => {
